@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Gothic_A1 } from 'next/font/google';
+import './globals.css';
 
+const gothic = Gothic_A1({ subsets: ['latin'], weight: ['400'] });
 
 export const metadata: Metadata = {
-  title: "지금 날씨",
-  description: "Jigeum weather is...",
+  title: '지금 날씨',
+  description: 'Jigeum weather is...',
 };
 
 export default function RootLayout({
@@ -12,9 +14,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return ( 
+  return (
     <html lang="ko">
-      <body>{children}</body>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className={gothic.className}>{children}</body>
     </html>
   );
 }
