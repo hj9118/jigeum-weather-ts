@@ -10,6 +10,7 @@ const gothic = Gothic_A1({
 export const metadata: Metadata = {
   title: '지금 날씨',
   description: 'Jigeum weather is...',
+
 };
 
 export default function RootLayout({
