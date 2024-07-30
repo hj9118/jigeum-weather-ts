@@ -1,11 +1,11 @@
-import Content from "./(home)/content";
-import Sidebar from "./(home)/sidebar";
+import Content from "./(home)/Content";
+import Sidebar from "./(home)/Sidebar";
 
 export default function Home() {
   return (
-    <main className="flex flex-row">
-    <Sidebar />
-    <Content />
-    </main>
+    <div className="flex flex-col sm:flex-row">
+      <Sidebar />
+      <Content />
+    </div>
   );
 }
