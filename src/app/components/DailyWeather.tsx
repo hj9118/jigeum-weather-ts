@@ -1,7 +1,16 @@
-const DailyWeather = () => {
-  return (
-    <div className="w-full aspect-square bg-red-400">DailyWeather</div>
-  )
+interface DailyWeatherProps {
+  icon: string;
 }
 
-export default DailyWeather
+const DailyWeather = ({ icon }: DailyWeatherProps) => {
+  return (
+    <div>
+      <img
+        src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
+        alt="날씨 아이콘"
+      />
+    </div>
+  );
+};
+
+export default DailyWeather;
