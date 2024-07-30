@@ -3,7 +3,7 @@ import Search from '../components/Search';
 
 const Sidebar = () => {
   return (
-    <aside className=" flex flex-col w-screen bg-slate-200 h-screen px-8 py-12 gap-4 sm:w-1/3">
+    <aside className=" flex flex-col bg-slate-200 min-h-screen px-8 py-12 gap-4 sm:w-1/3">
       <Search />
       <DailyWeather />
       <h3 className="text-xl">서울</h3>

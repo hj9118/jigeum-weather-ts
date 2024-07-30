@@ -8,9 +8,9 @@ const Content = () => {
   const { scrollContainerRef } = useDragScroll();
 
   return (
-    <main className="px-8 py-12 bg-blue-200 h-full w-screen">
+    <main className="px-8 py-12 bg-blue-200 max-h-screen overflow-y-auto">
       <section
-        className="overflow-hidden whitespace-nowrap w-full cursor-grab"
+        className="overflow-hidden whitespace-nowrap"
         ref={scrollContainerRef}
       >
         <div className="flex flex-nowrap flex-row gap-8">
