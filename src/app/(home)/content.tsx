@@ -9,23 +9,19 @@ const Content = () => {
 
   return (
     <main className="px-8 py-12 bg-blue-200 max-h-screen overflow-y-auto">
+      <h1>{new Date().toLocaleString()}</h1>
       <section
         className="overflow-hidden whitespace-nowrap"
         ref={scrollContainerRef}
       >
-          <h2 className="text-xl font-bold m-2">주간 날씨 예보</h2>
+        <h2 className="text-xl font-bold m-2">주간 날씨 예보</h2>
         <div className="flex flex-nowrap flex-row gap-8">
           <WeeklyWeather />
         </div>
       </section>
       <section className="mt-8">
-        <h1>2024. 07. 30 TUE</h1>
+        <h2 className="text-xl font-bold mb-2">날씨 정보</h2>
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <WeatherCard />
-          <WeatherCard />
-          <WeatherCard />
-          <WeatherCard />
-          <WeatherCard />
           <WeatherCard />
         </div>
       </section>
