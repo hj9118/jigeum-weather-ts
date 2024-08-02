@@ -13,11 +13,8 @@ const Content = () => {
         className="overflow-hidden whitespace-nowrap"
         ref={scrollContainerRef}
       >
+          <h2 className="text-xl font-bold m-2">주간 날씨 예보</h2>
         <div className="flex flex-nowrap flex-row gap-8">
-          <WeeklyWeather />
-          <WeeklyWeather />
-          <WeeklyWeather />
-          <WeeklyWeather />
           <WeeklyWeather />
         </div>
       </section>
