@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import useDragScroll from '@/hooks/useDragScroll';
 import WeeklyWeather from '../components/WeeklyWeather';
 import WeatherCard from '../components/WeatherCard';
@@ -7,12 +8,22 @@ import { useFullDate } from '@/hooks/useFormatDate';
 
 const Content = () => {
   const { scrollContainerRef } = useDragScroll();
-  const utcDate = Math.floor(Date.now() / 1000);
-  const fullDate = useFullDate(utcDate);
+  const [dateString, setDateString] = useState('Loading...');
+
+  useEffect(() => {
+    const updateDateString = () => {
+      const utcDate = Math.floor(Date.now() / 1000);
+      const fullDate = useFullDate(utcDate);
+      setDateString(fullDate);
+    };
+    updateDateString();
+    const intervalId = setInterval(updateDateString, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <main className="px-8 py-12 bg-blue-200 max-h-screen overflow-y-auto">
-      <h1>{fullDate}</h1>
+      <h1>{dateString}</h1>
       <section
         className="overflow-hidden whitespace-nowrap"
         ref={scrollContainerRef}
