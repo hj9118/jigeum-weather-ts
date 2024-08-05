@@ -3,13 +3,16 @@
 import useDragScroll from '@/hooks/useDragScroll';
 import WeeklyWeather from '../components/WeeklyWeather';
 import WeatherCard from '../components/WeatherCard';
+import { useFullDate } from '@/hooks/useFormatDate';
 
 const Content = () => {
   const { scrollContainerRef } = useDragScroll();
+  const utcDate = Math.floor(Date.now() / 1000);
+  const fullDate = useFullDate(utcDate);
 
   return (
     <main className="px-8 py-12 bg-blue-200 max-h-screen overflow-y-auto">
-      <h1>{new Date().toLocaleString()}</h1>
+      <h1>{fullDate}</h1>
       <section
         className="overflow-hidden whitespace-nowrap"
         ref={scrollContainerRef}

@@ -8,13 +8,25 @@ interface AirQualityData {
   }[];
 }
 
-import useLocation from '@/hooks/useLocation';
+interface WeatherData {
+  main: {
+    feels_like: number;
+    humidity: number;
+  };
+  sys: {
+    sunrise: number;
+    sunset: number;
+  };
+}
+
 import { useEffect, useState } from 'react';
 import WeatherInfo from './WeatherInfo';
+import useLocation from '@/hooks/useLocation';
+import { useSunTime } from '@/hooks/useFormatDate';
 
 const WeatherCard = () => {
   const { location, error } = useLocation();
-  const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [airQualityData, setAirQualityData] = useState<AirQualityData | null>(
     null,
   );
@@ -28,7 +40,7 @@ const WeatherCard = () => {
           if (!response.ok) {
             throw new Error('Failed to fetch weather data');
           }
-          const data = await response.json();
+          const data: WeatherData = await response.json();
           setWeatherData(data);
         } catch (error) {
           console.error('Error fetching weather data:', error);
@@ -73,13 +85,15 @@ const WeatherCard = () => {
   const pm10 = list[0]?.components.pm10;
   const pm2_5 = list[0]?.components.pm2_5;
 
+  const sunriseTime = useSunTime(sunrise);
+  const sunsetTime = useSunTime(sunset);
 
-  const sunriseTime = new Date(sunrise * 1000).toLocaleTimeString();
-  const sunsetTime = new Date(sunset * 1000).toLocaleTimeString();
+    console.log('Sunrise:', sunrise);
+    console.log('Sunset:', sunset);
 
   return (
     <>
-      <WeatherInfo title="체감온도" value={`${Math.round(feels_like)}°C`} />
+      <WeatherInfo title="체감온도" value={`${feels_like.toFixed(1)}°C`} />
       <WeatherInfo title="습도" value={`${humidity}%`} />
       <WeatherInfo title="일출" value={sunriseTime} />
       <WeatherInfo title="일몰" value={sunsetTime} />

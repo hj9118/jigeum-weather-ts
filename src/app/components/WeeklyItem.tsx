@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import LottieIcon from './LottieIcon';
+import { useShortDate } from '@/hooks/useFormatDate';
 
 interface WeeklyItemProps {
   date: number;
@@ -24,10 +25,22 @@ const WeeklyItem = ({
   pop,
   icon,
 }: WeeklyItemProps) => {
-  const kstDate = new Date(date * 1000);
-  const formattedDate = kstDate.toLocaleDateString();
-  const formattedTime = kstDate.toLocaleTimeString();
   const [animationData, setAnimationData] = useState<any>(null);
+  const shortDate = useShortDate(date);
+
+  useEffect(() => {
+    const loadAnimation = async () => {
+      const response = await fetch(`/weatherIcon/${icon}.json`);
+      if (response.ok) {
+        const animation = await response.json();
+        setAnimationData(animation);
+      } else {
+        console.error(response.status);
+      }
+    };
+
+    loadAnimation();
+  }, [icon]);
 
   return (
     <div className="aspect-[3/4] bg-slate-300 max-w-96 min-w-64 rounded-xl p-4 m-2 flex flex-col">
@@ -37,9 +50,7 @@ const WeeklyItem = ({
         <p>로딩 중...</p>
       )}
       <div>
-        <div>
-          {formattedDate} {formattedTime}
-        </div>
+        <div>{shortDate}</div>
         <div>{description}</div>
       </div>
       <div>
