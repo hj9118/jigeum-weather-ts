@@ -1,14 +1,34 @@
+import { useEffect, useState } from 'react';
+import LottieIcon from './LottieIcon';
+
 interface DailyWeatherProps {
   icon: string;
 }
 
 const DailyWeather = ({ icon }: DailyWeatherProps) => {
+  const [animationData, setAnimationData] = useState<any>(null);
+
+  useEffect(() => {
+    const loadAnimation = async () => {
+      const response = await fetch(`/weatherIcon/${icon}.json`);
+      if (response.ok) {
+        const animation = await response.json();
+        setAnimationData(animation);
+      } else {
+        console.error(response.status);
+      }
+    };
+
+    loadAnimation();
+  }, [icon]);
+
   return (
     <div>
-      <img
-        src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
-        alt="날씨 아이콘"
-      />
+      {animationData ? (
+        <LottieIcon animationData={animationData} />
+      ) : (
+        <p>로딩 중...</p>
+      )}
     </div>
   );
 };

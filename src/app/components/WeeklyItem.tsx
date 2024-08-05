@@ -1,3 +1,8 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import LottieIcon from './LottieIcon';
+
 interface WeeklyItemProps {
   date: number;
   description: string;
@@ -22,14 +27,15 @@ const WeeklyItem = ({
   const kstDate = new Date(date * 1000);
   const formattedDate = kstDate.toLocaleDateString();
   const formattedTime = kstDate.toLocaleTimeString();
+  const [animationData, setAnimationData] = useState<any>(null);
 
   return (
     <div className="aspect-[3/4] bg-slate-300 max-w-96 min-w-64 rounded-xl p-4 m-2 flex flex-col">
-      <img
-        src={`http://openweathermap.org/img/wn/${icon}.png`}
-        alt={description}
-        className="w-16 h-16"
-      />
+      {animationData ? (
+        <LottieIcon animationData={animationData} />
+      ) : (
+        <p>로딩 중...</p>
+      )}
       <div>
         <div>
           {formattedDate} {formattedTime}
