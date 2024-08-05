@@ -3,17 +3,7 @@
 import { useEffect, useState } from 'react';
 import LottieIcon from './LottieIcon';
 import { useShortDate } from '@/hooks/useFormatDate';
-
-interface WeeklyItemProps {
-  date: number;
-  description: string;
-  temp: number;
-  humidity: number;
-  rain?: number;
-  snow?: number;
-  pop: number;
-  icon: string;
-}
+import { WeeklyItemProps } from '../types';
 
 const WeeklyItem = ({
   date,
@@ -25,7 +15,7 @@ const WeeklyItem = ({
   pop,
   icon,
 }: WeeklyItemProps) => {
-  const [animationData, setAnimationData] = useState<any>(null);
+  const [animationData, setAnimationData] = useState(null);
   const shortDate = useShortDate(date);
 
   useEffect(() => {

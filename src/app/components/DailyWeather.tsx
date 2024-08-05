@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import LottieIcon from './LottieIcon';
+import { DailyWeatherProps } from '../types';
 
-interface DailyWeatherProps {
-  icon: string;
-}
+
 
 const DailyWeather = ({ icon }: DailyWeatherProps) => {
   const [animationData, setAnimationData] = useState<any>(null);

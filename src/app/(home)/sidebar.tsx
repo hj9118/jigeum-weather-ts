@@ -5,17 +5,7 @@ import useLocation from '@/hooks/useLocation';
 import useTranslateCity from '@/hooks/useTranslateCity';
 import Search from '../components/Search';
 import DailyWeather from '../components/DailyWeather';
-
-interface WeatherData {
-  name: string;
-  main: {
-    temp: number;
-  };
-  weather: {
-    description: string;
-    icon: string;
-  }[];
-}
+import { WeatherData } from '../types';
 
 const Sidebar = () => {
   const { location, error } = useLocation();

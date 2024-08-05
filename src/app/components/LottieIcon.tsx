@@ -1,8 +1,5 @@
 import Lottie from "lottie-react";
-
-interface LottieIconProps {
-  animationData: any;
-}
+import { LottieIconProps } from "../types";
 
 const LottieIcon = ({ animationData }:LottieIconProps) => {
   return <Lottie animationData={animationData} loop={true} />;

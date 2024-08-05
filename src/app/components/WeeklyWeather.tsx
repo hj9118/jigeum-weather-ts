@@ -3,25 +3,7 @@
 import useLocation from '@/hooks/useLocation';
 import { useEffect, useState } from 'react';
 import WeeklyItem from './WeeklyItem';
-
-interface WeatherData {
-  dt: number;
-  main: {
-    temp: number;
-    humidity: number;
-  };
-  weather: {
-    description: string;
-    icon: string;
-  }[];
-  pop: number;
-  rain?: {
-    '3h': number;
-  };
-  snow?: {
-    '3h': number;
-  };
-}
+import { WeatherData } from '../types';
 
 const WeeklyWeather = () => {
   const { location, error } = useLocation();

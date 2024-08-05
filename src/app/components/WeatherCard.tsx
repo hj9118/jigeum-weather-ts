@@ -1,28 +1,10 @@
 'use client';
-interface AirQualityData {
-  list: {
-    components: {
-      pm10: number;
-      pm2_5: number;
-    };
-  }[];
-}
-
-interface WeatherData {
-  main: {
-    feels_like: number;
-    humidity: number;
-  };
-  sys: {
-    sunrise: number;
-    sunset: number;
-  };
-}
 
 import { useEffect, useState } from 'react';
 import WeatherInfo from './WeatherInfo';
 import useLocation from '@/hooks/useLocation';
 import { useSunTime } from '@/hooks/useFormatDate';
+import { AirQualityData, WeatherData } from '../types';
 
 const WeatherCard = () => {
   const { location, error } = useLocation();
