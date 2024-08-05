@@ -6,6 +6,7 @@ import useTranslateCity from '@/hooks/useTranslateCity';
 import Search from '../components/Search';
 import DailyWeather from '../components/DailyWeather';
 import { WeatherData } from '../types';
+import Skeleton from '../components/Skeleton';
 
 const Sidebar = () => {
   const { location, error } = useLocation();
@@ -37,7 +38,15 @@ const Sidebar = () => {
   }
 
   if (!weatherData) {
-    return <div>Loading...</div>;
+    return (
+      <aside className="flex flex-col bg-white min-h-screen px-8 py-12 gap-4 sm:w-1/3">
+        <Search />
+        <DailyWeather icon="" />
+        <Skeleton width="100%" height="24px" />
+        <Skeleton width="100%" height="64px" />
+        <Skeleton width="100%" height="36px" />
+      </aside>
+    );
   }
 
   const { main, weather } = weatherData;

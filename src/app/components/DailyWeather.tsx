@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import LottieIcon from './LottieIcon';
 import { DailyWeatherProps } from '../types';
+import Skeleton from './Skeleton';
 
 
 
@@ -26,7 +27,7 @@ const DailyWeather = ({ icon }: DailyWeatherProps) => {
       {animationData ? (
         <LottieIcon animationData={animationData} />
       ) : (
-        <p>로딩 중...</p>
+        <Skeleton width='100%' height='200px' />
       )}
     </div>
   );
