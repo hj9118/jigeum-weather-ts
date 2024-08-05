@@ -5,3 +5,15 @@
 body{
   font-family: 'Gothic A1', sans-serif;
 }
+
+@layer base{
+  h1{
+    @apply text-6xl font-black;
+  }
+  h2{
+    @apply text-3xl;
+  }
+  h3{
+    @apply text-xl;
+  }
+}

@@ -43,12 +43,12 @@ const Sidebar = () => {
   const { main, weather } = weatherData;
 
   return (
-    <aside className="flex flex-col bg-slate-200 min-h-screen px-8 py-12 gap-4 sm:w-1/3">
+    <aside className="flex flex-col bg-white min-h-screen px-8 py-12 gap-4 sm:w-1/3">
       <Search />
       <DailyWeather icon={weather[0].icon} />
-      <h3 className="text-xl">{translatedCity || weatherData.name}</h3>
-      <h1 className="text-6xl font-black">{Math.round(main.temp)}℃</h1>
-      <h2 className="text-3xl">{weather[0].description}</h2>
+      <h3>{translatedCity || weatherData.name}</h3>
+      <h1>{Math.round(main.temp)}℃</h1>
+      <h2>{weather[0].description}</h2>
     </aside>
   );
 };

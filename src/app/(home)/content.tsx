@@ -23,7 +23,7 @@ const Content = () => {
 
   return (
     <main className="px-8 py-12 bg-blue-200 max-h-screen overflow-y-auto">
-      <h1>{dateString}</h1>
+      <h2>{dateString}</h2>
       <section
         className="overflow-hidden whitespace-nowrap"
         ref={scrollContainerRef}
