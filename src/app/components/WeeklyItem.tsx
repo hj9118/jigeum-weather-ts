@@ -34,11 +34,7 @@ const WeeklyItem = ({
 
   return (
     <div className="aspect-[3/4] bg-slate-300 max-w-96 min-w-64 rounded-xl p-4 m-2 flex flex-col">
-      {animationData ? (
         <LottieIcon animationData={animationData} />
-      ) : (
-        <p>로딩 중...</p>
-      )}
       <div>
         <div>{shortDate}</div>
         <div>{description}</div>

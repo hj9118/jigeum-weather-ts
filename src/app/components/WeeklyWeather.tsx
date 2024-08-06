@@ -4,10 +4,12 @@ import useLocation from '@/hooks/useLocation';
 import { useEffect, useState } from 'react';
 import WeeklyItem from './WeeklyItem';
 import { WeatherData } from '../types';
+import Skeleton from './Skeleton';
 
 const WeeklyWeather = () => {
   const { location, error } = useLocation();
   const [weatherData, setWeatherData] = useState<WeatherData[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchWeatherData = async () => {
@@ -22,6 +24,8 @@ const WeeklyWeather = () => {
           setWeatherData(data.list);
         } catch (error) {
           console.error('Error fetching weather data:', error);
+        } finally {
+          setLoading(false);
         }
       }
     };
@@ -33,25 +37,27 @@ const WeeklyWeather = () => {
     return <div>{error.message}</div>;
   }
 
-  if (weatherData.length === 0) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <div className="flex flex-row ">
-      {weatherData.map((item) => (
-        <WeeklyItem
-          key={item.dt}
-          date={item.dt}
-          description={item.weather[0].description}
-          temp={item.main.temp}
-          humidity={item.main.humidity}
-          rain={item.rain?.['3h']}
-          snow={item.snow?.['3h']}
-          pop={item.pop}
-          icon={item.weather[0].icon}
-        />
-      ))}
+    <div className="flex flex-row">
+      {loading
+        ? Array.from({ length: 3 }).map((_, index) => (
+            <div key={index} className="flex-shrink-0 gap-8">
+              <Skeleton className='aspect-[3/4] max-w-96 min-w-64 rounded-xl p-4 m-2 flex flex-col'/>
+            </div>
+          ))
+        : weatherData.map((item) => (
+            <WeeklyItem
+              key={item.dt}
+              date={item.dt}
+              description={item.weather[0].description}
+              temp={item.main.temp}
+              humidity={item.main.humidity}
+              rain={item.rain?.['3h']}
+              snow={item.snow?.['3h']}
+              pop={item.pop}
+              icon={item.weather[0].icon}
+            />
+          ))}
     </div>
   );
 };

@@ -1,8 +1,9 @@
-const Skeleton = ({ width, height }: { width: string; height: string }) => {
+'use client';
+
+const Skeleton = ({ className }: { className: string }) => {
   return (
     <div
-      className={`animate-pulse bg-gray-300 rounded`}
-      style={{ width, height }}
+      className={`animate-pulse bg-gray-300 rounded ${className}`}
     />
   );
 };

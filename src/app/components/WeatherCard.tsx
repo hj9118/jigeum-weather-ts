@@ -54,33 +54,54 @@ const WeatherCard = () => {
     return <div>{error.message}</div>;
   }
 
-  if (!weatherData || !airQualityData) {
-    return <div>Loading...</div>;
-  }
-
-  const {
-    main: { feels_like, humidity },
-    sys: { sunrise, sunset },
-  } = weatherData;
-
-  const { list } = airQualityData;
-  const pm10 = list[0]?.components.pm10;
-  const pm2_5 = list[0]?.components.pm2_5;
-
-  const sunriseTime = useSunTime(sunrise);
-  const sunsetTime = useSunTime(sunset);
-
-    console.log('Sunrise:', sunrise);
-    console.log('Sunset:', sunset);
+  const isLoading = !weatherData || !airQualityData;
+  const sunriseTime = weatherData?.sys?.sunrise
+    ? useSunTime(weatherData.sys.sunrise)
+    : '';
+  const sunsetTime = weatherData?.sys?.sunset
+    ? useSunTime(weatherData.sys.sunset)
+    : '';
 
   return (
     <>
-      <WeatherInfo title="체감온도" value={`${feels_like.toFixed(1)}°C`} />
-      <WeatherInfo title="습도" value={`${humidity}%`} />
-      <WeatherInfo title="일출" value={sunriseTime} />
-      <WeatherInfo title="일몰" value={sunsetTime} />
-      <WeatherInfo title="미세먼지" value={`${pm10} µg/m³`} />
-      <WeatherInfo title="초미세먼지" value={`${pm2_5} µg/m³`} />
+      <WeatherInfo
+        title="체감온도"
+        value={
+          weatherData?.main?.feels_like
+            ? `${weatherData.main.feels_like.toFixed(1)}°C`
+            : ''
+        }
+        loading={isLoading}
+      />
+      <WeatherInfo
+        title="습도"
+        value={
+          weatherData?.main?.humidity
+            ? `${weatherData.main.humidity}%`
+            : ''
+        }
+        loading={isLoading}
+      />
+      <WeatherInfo title="일출" value={sunriseTime} loading={isLoading} />
+      <WeatherInfo title="일몰" value={sunsetTime} loading={isLoading} />
+      <WeatherInfo
+        title="미세먼지"
+        value={
+          airQualityData?.list[0]?.components?.pm10
+            ? `${airQualityData.list[0].components.pm10} µg/m³`
+            : ''
+        }
+        loading={isLoading}
+      />
+      <WeatherInfo
+        title="초미세먼지"
+        value={
+          airQualityData?.list[0]?.components?.pm2_5
+            ? `${airQualityData.list[0].components.pm2_5} µg/m³`
+            : ''
+        }
+        loading={isLoading}
+      />
     </>
   );
 };
