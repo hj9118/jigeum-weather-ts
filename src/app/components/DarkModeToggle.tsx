@@ -29,7 +29,7 @@ const DarkModeToggle = () => {
   return (
     <button
       onClick={toggleDarkMode}
-      className="p-2 rounded bg-gray-200 dark:bg-slate-800 text-gray-900 dark:text-gray-100 absolute top-4 right-4"
+      className="p-2 rounded-md border dark:border-slate-700 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
     >
       {isDarkMode ? (
         <svg

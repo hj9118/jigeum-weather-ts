@@ -7,6 +7,7 @@ import Search from '../components/Search';
 import DailyWeather from '../components/DailyWeather';
 import { WeatherData } from '../types';
 import Skeleton from '../components/Skeleton';
+import DarkModeToggle from '../components/DarkModeToggle';
 
 const Sidebar = () => {
   const { location, error } = useLocation();
@@ -52,6 +53,9 @@ const Sidebar = () => {
 
   return (
     <aside className="flex flex-col bg-white min-h-screen px-8 py-12 gap-4 sm:w-1/4 dark:bg-slate-800 dark:text-white">
+      <div className="flex justify-end">
+          <DarkModeToggle />
+        </div>
       <Search />
       <DailyWeather icon={weather[0].icon} />
       <h3>{translatedCity || weatherData.name}</h3>
