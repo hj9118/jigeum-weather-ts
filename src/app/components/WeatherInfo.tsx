@@ -6,14 +6,14 @@ const WeatherInfo = ({
   value,
   loading
 }: WeatherInfoProps & { loading: boolean }) => (
-  <div className="bg-slate-300 aspect-square w-full rounded-xl p-4">
+  <div className="bg-slate-100 shadow-lg aspect-[2/1] w-full rounded-xl">
     {loading ? (
-      <Skeleton className='w-full aspect-square rounded-xl p-4' />
+      <Skeleton className='w-full aspect-[2/1] rounded-xl p-4' />
     ) : (
-      <>
-        <div className="text-lg font-bold">{title}</div>
-        <div className="text-xl">{value}</div>
-      </>
+      <div className='p-4'>
+        <h3 className='mb-4'>{title}</h3>
+        <p className='text-4xl font-bold'>{value}</p>
+      </div>
     )}
   </div>
 );

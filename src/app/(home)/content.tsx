@@ -26,29 +26,22 @@ const Content = () => {
   }, []);
 
   return (
-    <main className="px-8 py-12 bg-blue-200 max-h-screen overflow-y-auto sm:w-3/4">
-      <h2>{loading ? <Skeleton className="w-4/5 h-9" /> : dateString}</h2>
+    <main className="px-8 py-12 bg-slate-50 h-screen overflow-y-auto sm:w-3/4 sm:max-h-screen">
+      <h2 className="break-keep">
+        {loading ? <Skeleton className="w-4/5 h-9" /> : dateString}
+      </h2>
       <section
         className="overflow-hidden whitespace-nowrap mt-2"
         ref={scrollContainerRef}
       >
-        <h3 className="m-2">주간 날씨 예보</h3>
-        <div className="flex flex-nowrap flex-row gap-8">
-        {loading ? (
-            <>
-              <Skeleton className="aspect-[3/4] max-w-96 min-w-64 rounded-xl p-4 m-2" />
-              <Skeleton className="aspect-[3/4] max-w-96 min-w-64 rounded-xl p-4 m-2" />
-              <Skeleton className="aspect-[3/4] max-w-96 min-w-64 rounded-xl p-4 m-2" />
-            </>
-          ) : (
-            <WeeklyWeather />
-          )}
-        </div>
+        <h3 className="mb-2 font-black">주간 날씨 예보</h3>
+
+        <WeeklyWeather />
       </section>
       <section className="mt-8">
-        <h3 className="mb-2">날씨 정보</h3>
+        <h3 className="mb-2 font-black">날씨 정보</h3>
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <WeatherCard />
+          <WeatherCard />
         </div>
       </section>
     </main>

@@ -12,9 +12,6 @@ const WeeklyItem = ({
   description,
   temp,
   humidity,
-  rain,
-  snow,
-  pop,
   icon,
 }: WeeklyItemProps) => {
   const [animationData, setAnimationData] = useState(null);
@@ -68,21 +65,18 @@ const WeeklyItem = ({
   return (
     <div
       ref={ref}
-      className="aspect-[3/4] bg-slate-300 max-w-96 min-w-64 rounded-xl p-4 m-2 flex flex-col"
+      className="aspect-[3/4] bg-slate-100 shadow-md max-w-96 min-w-64 rounded-xl p-4 m-2 flex flex-col"
     >
+      <h4>{shortDate}</h4>
       {isVisible && animationData && (
         <LottieIcon animationData={animationData} />
       )}
-      <div>
-        <div>{shortDate}</div>
-        <div>{description}</div>
+      <div className='flex flex-row justify-between'>
+        <h2 className="font-black">{Math.round(temp)}°C</h2>
+        <h2>{humidity}%</h2>
       </div>
       <div>
-        <div>{Math.round(temp)}°C</div>
-        <div>습도: {humidity}%</div>
-        <div>강수 확률: {pop}%</div>
-        {rain ? <div>강우량: {rain}mm</div> : null}
-        {snow ? <div>적설량: {snow}mm</div> : null}
+        <h4>{description}</h4>
       </div>
     </div>
   );

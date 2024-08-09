@@ -37,7 +37,7 @@ const WeeklyWeather = () => {
   }
 
   return (
-    <div className="flex flex-row">
+    <section className="flex flex-row">
       {loading
         ? Array.from({ length: 3 }).map((_, index) => (
             <div key={index} className="flex-shrink-0 gap-8">
@@ -57,7 +57,7 @@ const WeeklyWeather = () => {
               icon={item.weather[0].icon}
             />
           ))}
-    </div>
+    </section>
   );
 };
 
