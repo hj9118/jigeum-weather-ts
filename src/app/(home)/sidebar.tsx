@@ -38,7 +38,7 @@ const Sidebar = () => {
 
   if (!weatherData) {
     return (
-      <aside className="flex flex-col bg-white min-h-screen px-8 py-12 gap-4 sm:w-1/4">
+      <aside className="flex flex-col bg-white min-h-screen px-8 py-12 gap-4 sm:w-1/4 dark:bg-slate-800 dark:text-white">
         <Search />
         <Skeleton className='aspect-square' />
         <Skeleton className="h-8" />
@@ -51,7 +51,7 @@ const Sidebar = () => {
   const { main, weather } = weatherData;
 
   return (
-    <aside className="flex flex-col bg-white min-h-screen px-8 py-12 gap-4 sm:w-1/4">
+    <aside className="flex flex-col bg-white min-h-screen px-8 py-12 gap-4 sm:w-1/4 dark:bg-slate-800 dark:text-white">
       <Search />
       <DailyWeather icon={weather[0].icon} />
       <h3>{translatedCity || weatherData.name}</h3>

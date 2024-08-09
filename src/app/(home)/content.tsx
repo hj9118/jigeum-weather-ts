@@ -6,6 +6,7 @@ import WeeklyWeather from '../components/WeeklyWeather';
 import WeatherCard from '../components/WeatherCard';
 import { useFullDate } from '@/hooks/useFormatDate';
 import Skeleton from '../components/Skeleton';
+import DarkModeToggle from '../components/DarkModeToggle';
 
 const Content = () => {
   const { scrollContainerRef } = useDragScroll();
@@ -26,7 +27,8 @@ const Content = () => {
   }, []);
 
   return (
-    <main className="px-8 py-12 bg-slate-50 h-screen overflow-y-auto sm:w-3/4 sm:max-h-screen">
+    <main className="px-8 py-12 bg-slate-50 h-screen overflow-y-auto sm:w-3/4 sm:max-h-screen dark:bg-slate-850 dark:text-white">
+      <DarkModeToggle />
       <h2 className="break-keep">
         {loading ? <Skeleton className="w-4/5 h-9" /> : dateString}
       </h2>

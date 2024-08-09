@@ -65,7 +65,7 @@ const WeeklyItem = ({
   return (
     <div
       ref={ref}
-      className="aspect-[3/4] bg-slate-100 shadow-md max-w-96 min-w-64 rounded-xl p-4 m-2 flex flex-col"
+      className="aspect-[3/4] bg-slate-100 shadow-md max-w-96 min-w-64 rounded-xl p-4 m-2 flex flex-col dark:bg-slate-800 dark:text-white"
     >
       <h4>{shortDate}</h4>
       {isVisible && animationData && (

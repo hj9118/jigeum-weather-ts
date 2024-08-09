@@ -11,8 +11,12 @@ const config: Config = {
       fontFamily: {
         sans: ['Gothic A1', 'sans-serif'],
       },
+      colors:{
+        'slate-850': 'rgb(23, 32, 51)',
+      }
     },
   },
   plugins: [],
+  darkMode: 'class',
 };
 export default config;

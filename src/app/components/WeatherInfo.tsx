@@ -6,7 +6,7 @@ const WeatherInfo = ({
   value,
   loading
 }: WeatherInfoProps & { loading: boolean }) => (
-  <div className="bg-slate-100 shadow-lg aspect-[2/1] w-full rounded-xl">
+  <div className="bg-slate-100 shadow-lg aspect-[2/1] w-full rounded-xl dark:bg-slate-800 dark:shadow-slate-850">
     {loading ? (
       <Skeleton className='w-full aspect-[2/1] rounded-xl p-4' />
     ) : (
