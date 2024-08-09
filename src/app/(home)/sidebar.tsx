@@ -17,8 +17,7 @@ const Sidebar = () => {
     const fetchWeather = async () => {
       if (location.latitude && location.longitude) {
         try {
-          const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&lang=kr&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=metric`;
-          const response = await fetch(apiUrl);
+          const response = await fetch(`/api/weather?lat=${location.latitude}&lon=${location.longitude}`);
           if (!response.ok) {
             throw new Error('Failed to fetch weather data');
           }

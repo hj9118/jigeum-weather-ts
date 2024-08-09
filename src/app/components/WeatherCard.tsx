@@ -17,8 +17,9 @@ const WeatherCard = () => {
     const fetchWeatherData = async () => {
       if (location.latitude && location.longitude) {
         try {
-          const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&lang=kr&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=metric`;
-          const response = await fetch(apiUrl);
+          const response = await fetch(
+            `/api/weather?lat=${location.latitude}&lon=${location.longitude}`,
+          );
           if (!response.ok) {
             throw new Error('Failed to fetch weather data');
           }
@@ -33,8 +34,9 @@ const WeatherCard = () => {
     const fetchAirQualityData = async () => {
       if (location.latitude && location.longitude) {
         try {
-          const airPollutionApiUrl = `${process.env.NEXT_PUBLIC_API_URL}/data/2.5/air_pollution?lat=${location.latitude}&lon=${location.longitude}&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=metric`;
-          const response = await fetch(airPollutionApiUrl);
+          const response = await fetch(
+            `/api/airQuality?lat=${location.latitude}&lon=${location.longitude}`,
+          );
           if (!response.ok) {
             throw new Error('Failed to fetch air quality data');
           }
@@ -76,9 +78,7 @@ const WeatherCard = () => {
       <WeatherInfo
         title="습도"
         value={
-          weatherData?.main?.humidity
-            ? `${weatherData.main.humidity}%`
-            : ''
+          weatherData?.main?.humidity ? `${weatherData.main.humidity}%` : ''
         }
         loading={isLoading}
       />
