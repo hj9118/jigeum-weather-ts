@@ -26,7 +26,7 @@ const Content = () => {
   }, []);
 
   return (
-    <main className="px-8 py-12 bg-slate-50 h-screen overflow-y-auto sm:w-3/4 sm:max-h-screen dark:bg-slate-850 dark:text-white">
+    <main className="px-8 py-12 bg-slate-50 h-screen sm:w-3/4 sm:overflow-auto sm:max-h-screen dark:bg-slate-850 dark:text-white">
       <h2 className="break-keep">
         {loading ? <Skeleton className="w-4/5 h-9" /> : dateString}
       </h2>
