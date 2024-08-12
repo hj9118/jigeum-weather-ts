@@ -4,36 +4,48 @@ const useDragScroll = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMove = (e: MouseEvent | TouchEvent) => {
       if (!scrollContainerRef.current) return;
-      const startX = e.pageX - scrollContainerRef.current.offsetLeft;
+      
+      // Check if it's a touch event or mouse event
+      const clientX = e instanceof TouchEvent ? e.touches[0].clientX : (e as MouseEvent).clientX;
+      const startX = clientX - scrollContainerRef.current.offsetLeft;
       const scrollLeft = scrollContainerRef.current.scrollLeft;
 
-      const handleMouseMoveInner = (moveEvent: MouseEvent) => {
-        const x = moveEvent.pageX - scrollContainerRef.current!.offsetLeft;
+      const handleMoveInner = (moveEvent: MouseEvent | TouchEvent) => {
+        if (!scrollContainerRef.current) return;
+        const x = moveEvent instanceof TouchEvent ? moveEvent.touches[0].clientX : (moveEvent as MouseEvent).clientX;
         const walk = (x - startX) * 1;
-        scrollContainerRef.current!.scrollLeft = scrollLeft - walk;
+        scrollContainerRef.current.scrollLeft = scrollLeft - walk;
       };
 
-      const handleMouseUp = () => {
-        window.removeEventListener('mousemove', handleMouseMoveInner);
-        window.removeEventListener('mouseup', handleMouseUp);
+      const handleUp = () => {
+        window.removeEventListener('mousemove', handleMoveInner);
+        window.removeEventListener('mouseup', handleUp);
+        window.removeEventListener('touchmove', handleMoveInner);
+        window.removeEventListener('touchend', handleUp);
       };
 
-      window.addEventListener('mousemove', handleMouseMoveInner);
-      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('mousemove', handleMoveInner);
+      window.addEventListener('mouseup', handleUp);
+      window.addEventListener('touchmove', handleMoveInner);
+      window.addEventListener('touchend', handleUp);
     };
 
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.addEventListener('mousedown', handleMouseMove);
+      scrollContainerRef.current.addEventListener('mousedown', handleMove);
+      scrollContainerRef.current.addEventListener('touchstart', handleMove);
     }
 
     return () => {
       if (scrollContainerRef.current) {
-        scrollContainerRef.current.removeEventListener('mousedown', handleMouseMove);
+        scrollContainerRef.current.removeEventListener('mousedown', handleMove);
+        scrollContainerRef.current.removeEventListener('touchstart', handleMove);
       }
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseMove);
+      window.removeEventListener('mousemove', handleMove);
+      window.removeEventListener('mouseup', handleMove);
+      window.removeEventListener('touchmove', handleMove);
+      window.removeEventListener('touchend', handleMove);
     };
   }, []);
 
