@@ -40,7 +40,7 @@ const Sidebar = () => {
   if (!weatherData) {
     return (
       <aside className="flex flex-col bg-white min-h-screen px-8 py-12 gap-4 sm:w-1/4 dark:bg-slate-800 dark:text-white">
-        <Search />
+        {/* <Search /> */}
         <Skeleton className='aspect-square' />
         <Skeleton className="h-8" />
         <Skeleton className=" h-24" />
@@ -56,7 +56,7 @@ const Sidebar = () => {
       <div className="flex justify-end">
           <DarkModeToggle />
         </div>
-      <Search />
+      {/* <Search /> */}
       <DailyWeather icon={weather[0].icon} />
       <h3>{translatedCity || weatherData.name}</h3>
       <h1>{Math.round(main.temp)}℃</h1>
