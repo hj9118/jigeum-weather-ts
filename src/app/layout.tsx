@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="ko">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" crossOrigin="use-credentials" href="manifest.json"/>
         <link
           href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap"
           rel="stylesheet"
