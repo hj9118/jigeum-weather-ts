@@ -10,7 +10,7 @@ const useTranslateCity = (cityName: string) => {
         try {
           const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/geo/1.0/direct?q=${cityName}&limit=1&appid=${process.env.NEXT_PUBLIC_API_KEY}`);
           if (!response.ok) {
-            throw new Error('도시명을 불러올 수 없습니다');
+            throw new Error('Failed to fetch city name');
           }
           const data = await response.json();
           if (data.length > 0) {
@@ -20,7 +20,7 @@ const useTranslateCity = (cityName: string) => {
             setTranslatedCity(null);
           }
         } catch (error) {
-          setError(error instanceof Error ? error.message : '알 수 없는 오류 발생');
+          setError(error instanceof Error ? error.message : 'Uknown Error');
         }
       }
     };

@@ -26,7 +26,7 @@ const useLocation = () => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
     } else {
-      setError({ message: "위치 정보를 알아내지 못했습니다." });
+      setError({ message: "Failed to fetch location data" });
     }
   }, []);
 

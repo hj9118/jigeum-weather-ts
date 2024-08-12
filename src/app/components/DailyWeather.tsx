@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
+import Skeleton from './Skeleton';
 import LottieIcon from './LottieIcon';
 import { DailyWeatherProps } from '../types';
-import Skeleton from './Skeleton';
 
 
 
@@ -27,7 +27,7 @@ const DailyWeather = ({ icon }: DailyWeatherProps) => {
       {animationData ? (
         <LottieIcon animationData={animationData} />
       ) : (
-        <Skeleton width='100%' height='200px' />
+        <Skeleton className='w-full aspect-square' />
       )}
     </div>
   );

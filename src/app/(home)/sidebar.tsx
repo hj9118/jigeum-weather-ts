@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Search from '../components/Search';
+import Skeleton from '../components/Skeleton';
+import DailyWeather from '../components/DailyWeather';
+import DarkModeToggle from '../components/DarkModeToggle';
 import useLocation from '@/hooks/useLocation';
 import useTranslateCity from '@/hooks/useTranslateCity';
-import Search from '../components/Search';
-import DailyWeather from '../components/DailyWeather';
 import { WeatherData } from '../types';
-import Skeleton from '../components/Skeleton';
-import DarkModeToggle from '../components/DarkModeToggle';
 
 const Sidebar = () => {
   const { location, error } = useLocation();
@@ -18,7 +18,9 @@ const Sidebar = () => {
     const fetchWeather = async () => {
       if (location.latitude && location.longitude) {
         try {
-          const response = await fetch(`/api/weather?lat=${location.latitude}&lon=${location.longitude}`);
+          const response = await fetch(
+            `/api/weather?lat=${location.latitude}&lon=${location.longitude}`,
+          );
           if (!response.ok) {
             throw new Error('Failed to fetch weather data');
           }
@@ -40,8 +42,11 @@ const Sidebar = () => {
   if (!weatherData) {
     return (
       <aside className="flex flex-col bg-white min-h-screen px-8 py-12 gap-4 sm:w-1/4 dark:bg-slate-800 dark:text-white">
+        <div className="flex justify-end">
+          <Skeleton className='w-8 aspect-square' />
+        </div>
         {/* <Search /> */}
-        <Skeleton className='aspect-square' />
+        <Skeleton className="aspect-square" />
         <Skeleton className="h-8" />
         <Skeleton className=" h-24" />
         <Skeleton className=" h-16" />
@@ -54,8 +59,8 @@ const Sidebar = () => {
   return (
     <aside className="flex flex-col bg-white min-h-screen px-8 py-12 gap-4 sm:w-1/4 dark:bg-slate-800 dark:text-white">
       <div className="flex justify-end">
-          <DarkModeToggle />
-        </div>
+        <DarkModeToggle />
+      </div>
       {/* <Search /> */}
       <DailyWeather icon={weather[0].icon} />
       <h3>{translatedCity || weatherData.name}</h3>

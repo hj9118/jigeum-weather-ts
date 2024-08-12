@@ -1,10 +1,10 @@
 'use client';
 
-import useLocation from '@/hooks/useLocation';
 import { useEffect, useState } from 'react';
-import WeeklyItem from './WeeklyItem';
-import { WeatherData } from '../types';
 import Skeleton from './Skeleton';
+import WeeklyItem from './WeeklyItem';
+import useLocation from '@/hooks/useLocation';
+import { WeatherData } from '../types';
 
 const WeeklyWeather = () => {
   const { location, error } = useLocation();

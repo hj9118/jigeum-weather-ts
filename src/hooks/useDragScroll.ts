@@ -7,7 +7,6 @@ const useDragScroll = () => {
     const handleMove = (e: MouseEvent | TouchEvent) => {
       if (!scrollContainerRef.current) return;
       
-      // Check if it's a touch event or mouse event
       const clientX = e instanceof TouchEvent ? e.touches[0].clientX : (e as MouseEvent).clientX;
       const startX = clientX - scrollContainerRef.current.offsetLeft;
       const scrollLeft = scrollContainerRef.current.scrollLeft;

@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import useDragScroll from '@/hooks/useDragScroll';
-import WeeklyWeather from '../components/WeeklyWeather';
-import WeatherCard from '../components/WeatherCard';
-import { useFullDate } from '@/hooks/useFormatDate';
 import Skeleton from '../components/Skeleton';
+import WeatherCard from '../components/WeatherCard';
+import WeeklyWeather from '../components/WeeklyWeather';
+import useDragScroll from '@/hooks/useDragScroll';
+import { useFullDate } from '@/hooks/useFormatDate';
 
 const Content = () => {
   const { scrollContainerRef } = useDragScroll();
@@ -35,7 +35,6 @@ const Content = () => {
         ref={scrollContainerRef}
       >
         <h3 className="mb-2 font-black">주간 날씨 예보</h3>
-
         <WeeklyWeather />
       </section>
       <section className="mt-8">
