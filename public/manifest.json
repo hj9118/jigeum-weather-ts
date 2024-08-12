@@ -1,0 +1,38 @@
+{
+  "name": "지금 날씨",
+  "short_name": "지금 날씨",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "transparent",
+  "theme_color": "transparent",
+  "description": "지금 여기 날씨는?",
+  "icons": [
+    {
+      "src": "/favicon/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
