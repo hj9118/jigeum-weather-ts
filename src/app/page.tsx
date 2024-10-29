@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     url: 'https://jigeum-weather.vercel.app',
     images: [
       {
-        url: 'https://cdn.hankyung.com/photo/201905/01.19557191.1.jpg',
+        url: '/jigeum.png',
         width: 800,
         height: 600,
         alt: '지금 날씨 이미지',
