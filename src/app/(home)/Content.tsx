@@ -26,15 +26,15 @@ const Content = () => {
   }, []);
 
   return (
-    <main className="px-8 py-12 bg-slate-50 h-screen sm:w-3/4 sm:overflow-auto sm:max-h-screen dark:bg-slate-850 dark:text-white">
+    <main className="px-8 py-12 bg-slate-50 min-h-screen sm:w-3/4 sm:overflow-auto dark:bg-slate-850 dark:text-white">
       <h2 className="break-keep">
         {loading ? <Skeleton className="w-4/5 h-9" /> : dateString}
       </h2>
+      <h3 className="mb-2 font-black">주간 날씨 예보</h3>
       <section
         className="overflow-hidden whitespace-nowrap mt-2"
         ref={scrollContainerRef}
       >
-        <h3 className="mb-2 font-black">주간 날씨 예보</h3>
         <WeeklyWeather />
       </section>
       <section className="mt-8">
