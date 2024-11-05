@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![썸네일](https://github.com/hj9118/jigeum-weather-ts/blob/main/public/jigeum.png?raw=true)
+##### 🔗 [지금 날씨](https://jigeum-weather.vercel.app/)
 
-## Getting Started
+# 지금 날씨
+사용자 지역의 실시간 날씨 정보와 3시간 단위의 주간 날씨 예보를 보여주는 웹 애플리케이션입니다.
 
-First, run the development server:
+![image](https://github.com/user-attachments/assets/cbf4ae12-1f25-4030-afce-18ad5058056b)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 주요 기능
+- **스켈레톤 로딩 화면** <br>
+날씨 정보를 받는 동안 사용자에게 스켈레톤 화면을 보여 UX적 포인트를 주었습니다.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **위치 기반 날씨 정보** <br>
+첫 접속시, 사용자의 위치 정보를 수집하여 해당 지역의 현재 날씨, 기온을 표시합니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **사이드바** <br>
+날씨 아이콘과 지역명, 현재 온도와 날씨 정보를 표시합니다. <br>
+상단 다크모드 토글을 통해 라이트모드/다크모드를 전환할 수 있습니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **주간 날씨 예보** <br>
+3시간 단위로 예보를 제공하며, 슬라이드 하여 주간 날씨 예보를 확인할 수 있습니다. <br>
+마우스, 터치로 슬라이딩하여 정보 확인이 가능합니다. <br>
+각 카드에는 일시, 날짜 아이콘, 온습도 정보를 제공합니다.
 
-## Learn More
+- **현재 날씨 상세 정보** <br>
+주간 날씨 카드 하단에는 현재 날씨와 관련된 상세 정보를 제공합니다 <br>
+체감 온도, 습도, 일출/일몰 시간, 미세먼지/초미세먼지 농도를 제공하고 있습니다.
 
-To learn more about Next.js, take a look at the following resources:
+- **PWA 지원** <br>
+모바일 환경에서도 빠르고 편리하게 사용할 수 있도록 네이티브 앱과 유사하도록 PWA 기능을 지원합니다.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 기술스택
+[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1730790706532?alt=media&token=ca2753e4-966e-4185-95f6-7fd71158ed02)](https://github.com/msdio/stackticon)
+- API: OpenWeatherMap
